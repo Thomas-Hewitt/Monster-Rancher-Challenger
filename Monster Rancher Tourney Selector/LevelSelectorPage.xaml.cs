@@ -26,7 +26,7 @@ namespace Monster_Rancher_Tourney_Selector
             InitializeComponent();
         }
 
-        private void Click_Click(object sender, RoutedEventArgs e)
+        private async void Click_Click(object sender, RoutedEventArgs e)
         {
             Random rng = new Random();
             int min = 0;
@@ -38,6 +38,12 @@ namespace Monster_Rancher_Tourney_Selector
 
             if (min < max && max > 0)
             {
+                int randtime = rng.Next(5, 20);
+                for (int i = 0; i < randtime; i++)
+                {
+                    Level.Text = rng.Next(min, max).ToString();
+                    await Task.Delay(25);
+                }
                 Level.Text = rng.Next(min, max).ToString();
             }
             else

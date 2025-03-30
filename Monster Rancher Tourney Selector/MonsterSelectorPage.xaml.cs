@@ -92,10 +92,16 @@ namespace Monster_Rancher_Tourney_Selector
             Monsters = shuffledMonsters;
         }
 
-        private void Click_Click(object sender, RoutedEventArgs e)
+        private async void Click_Click(object sender, RoutedEventArgs e)
         {
             // Randomly select a monster from the randomized list of monsters (Unnecessary, might just index later).
             Random rng = new Random();
+            int randtime = rng.Next(10, 50);
+            for(int i = 0; i < randtime; i++)
+            {
+                Monster.Text = Monsters[rng.Next(0, Monsters.Count)];
+                await Task.Delay(25);
+            }
             Monster.Text = Monsters[rng.Next(0, Monsters.Count)];
         }
 
