@@ -20,5 +20,10 @@
         <Button x:Name="Monster" Content="Monster Selector" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Click="Monster_Click" FontSize="25"/>
         <Button x:Name="Stat" Content="Stat Selector" Grid.Row="3" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Click="Stat_Click" FontSize="25"/>
         <Button x:Name="Level" Content="Level Selector" Grid.Row="4" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Click="Level_Click" FontSize="25"/>
+        <TextBlock Grid.Row="5" HorizontalAlignment="Center" VerticalAlignment="Top">
+            <Hyperlink NavigateUri="https://legendcup.com/faqmr1dxcdlist.php" RequestNavigate="Monster_RequestNavigate">
+                legendcup.com - CD List
+            </Hyperlink>
+        </TextBlock>
     </Grid>
 </Window>

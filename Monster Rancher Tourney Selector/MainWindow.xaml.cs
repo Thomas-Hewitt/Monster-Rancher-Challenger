@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using System.Diagnostics;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -35,5 +36,16 @@ namespace Monster_Rancher_Tourney_Selector
         {
             MainFrame.Navigate(new Uri("LevelSelectorPage.xaml", UriKind.Relative));
         }
+
+        private void Monster_RequestNavigate(object sender, System.Windows.Navigation.RequestNavigateEventArgs e)
+        {
+            Process.Start(new ProcessStartInfo
+            {
+                FileName = e.Uri.AbsoluteUri,
+                UseShellExecute = true
+            });
+            e.Handled = true;
+        }
+
     }
 }
