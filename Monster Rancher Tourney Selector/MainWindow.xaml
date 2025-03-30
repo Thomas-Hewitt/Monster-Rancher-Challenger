@@ -1,0 +1,24 @@
+﻿<Window x:Class="Monster_Rancher_Tourney_Selector.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Monster_Rancher_Tourney_Selector"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="80"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="1*"/>
+
+        </Grid.RowDefinitions>
+        <Frame x:Name="MainFrame" Grid.Column="1" Grid.Row="0" Grid.RowSpan="2"/>
+        <Button x:Name="Monster" Content="Monster Selector" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Click="Monster_Click" FontSize="25"/>
+        <Button x:Name="Stat" Content="Stat Selector" Grid.Row="3" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Click="Stat_Click" FontSize="25"/>
+        <Button x:Name="Level" Content="Level Selector" Grid.Row="4" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Click="Level_Click" FontSize="25"/>
+    </Grid>
+</Window>
