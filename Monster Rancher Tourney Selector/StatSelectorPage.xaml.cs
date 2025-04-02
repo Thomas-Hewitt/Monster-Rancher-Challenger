@@ -14,7 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Monster_Rancher_Tourney_Selector
+namespace Monster_Rancher_Challenger
 {
     /// <summary>
     /// Interaction logic for StatSelectorPage.xaml

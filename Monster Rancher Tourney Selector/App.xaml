@@ -1,7 +1,7 @@
-﻿<Application x:Class="Monster_Rancher_Tourney_Selector.App"
+﻿<Application x:Class="Monster_Rancher_Challenger.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:Monster_Rancher_Tourney_Selector"
+             xmlns:local="clr-namespace:Monster_Rancher_Challenger"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
          

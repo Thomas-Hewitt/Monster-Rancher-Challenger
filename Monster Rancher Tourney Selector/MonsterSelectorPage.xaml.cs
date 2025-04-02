@@ -11,7 +11,7 @@ using System.Diagnostics;
 using System.Windows.Media;
 using System.Drawing;
 
-namespace Monster_Rancher_Tourney_Selector
+namespace Monster_Rancher_Challenger
 {
     public partial class MonsterSelectorPage : Page
     {
