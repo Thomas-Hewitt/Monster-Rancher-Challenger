@@ -8,11 +8,14 @@ using System.Security.Cryptography;
 using System.Windows;
 using System.Windows.Controls;
 using System.Diagnostics;
+using System.Windows.Media;
+using System.Drawing;
 
 namespace Monster_Rancher_Tourney_Selector
 {
     public partial class MonsterSelectorPage : Page
     {
+        // This list contains every monster available within the DX version of Monster Rancher 1.
         List<string> Monsters = new List<string> { "Dino (Dino/Dino)", "Anki (Dino/Golem)", "Lidee (Dino/Tiger)", "Valentino (Dino/Pixie)", "Shel (Dino/Worm)", "Slash (Dino/Jell)"
         , "Mustard (Dino/Suezo)", "Spot (Dino/Hare)", "Goldy (Dino/Gali)", "Black Rex (Dino/Monol)", "Grape (Dino/Naga)", "Aloha (Dino/Plant)", "Geisha (Dino/???)", "Gallop (Dino/???)"
         , "Smiley (Dino/???)"
@@ -78,15 +81,14 @@ namespace Monster_Rancher_Tourney_Selector
         
         , "Ape (Ape/Ape)", "Stone Ape (Ape/Golem)", "George (Ape/Hare)", "Great Ape (Ape/Gali)", "Pepe (Ape/Plant)", "Shades (Ape/???)", "Cutey (Ape/???)", "Hot Foot (Ape/???)"};
 
+        List<SolidColorBrush> colors = new List<SolidColorBrush> { new SolidColorBrush(Colors.Salmon), new SolidColorBrush(Colors.RoyalBlue)
+        , new SolidColorBrush(Colors.SteelBlue), new SolidColorBrush(Colors.Fuchsia), new SolidColorBrush(Colors.DarkViolet), new SolidColorBrush(Colors.DarkRed)
+        , new SolidColorBrush(Colors.DarkOliveGreen) };
+
         public MonsterSelectorPage()
         {
             InitializeComponent();
             Random rng = new Random();
-            //List<int> indices = new List<int>();
-            //for(int i = 0; i < Monsters.Count; i++)
-            //{
-            //    indices.Add(rng.Next(0, Monsters.Count));
-            //}
             // Randomize the list of monsters.
             List<string> shuffledMonsters = Monsters.OrderBy(_ => rng.Next(0, Monsters.Count)).ToList();
             Monsters = shuffledMonsters;
@@ -96,13 +98,18 @@ namespace Monster_Rancher_Tourney_Selector
         {
             // Randomly select a monster from the randomized list of monsters (Unnecessary, might just index later).
             Random rng = new Random();
+            Random color = new Random();
             int randtime = rng.Next(10, 50);
+            string full = string.Empty;
             for(int i = 0; i < randtime; i++)
             {
-                Monster.Text = Monsters[rng.Next(0, Monsters.Count)];
+                full = Monsters[rng.Next(0, Monsters.Count)];
+                Monster.Content = full.Split(" (")[0];
+                Monster.Foreground = colors[rng.Next(0, colors.Count)];
+                Breed.Content = "(" + full.Split(" (")[1];
                 await Task.Delay(25);
             }
-            Monster.Text = Monsters[rng.Next(0, Monsters.Count)];
+            //Monster.Text = Monsters[rng.Next(0, Monsters.Count)];
         }
 
         private void Monster_RequestNavigate(object sender, System.Windows.Navigation.RequestNavigateEventArgs e)
