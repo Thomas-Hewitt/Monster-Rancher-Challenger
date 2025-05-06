@@ -85,6 +85,7 @@ namespace Monster_Rancher_Challenger
         //List<SolidColorBrush> colors = new List<SolidColorBrush> { new SolidColorBrush(Colors.Salmon), new SolidColorBrush(Colors.RoyalBlue)
         //, new SolidColorBrush(Colors.SteelBlue), new SolidColorBrush(Colors.Fuchsia), new SolidColorBrush(Colors.DarkViolet), new SolidColorBrush(Colors.DarkRed)
         //, new SolidColorBrush(Colors.DarkOliveGreen) };
+        string prevMon = string.Empty;
 
         public MonsterSelectorPage()
         {
@@ -124,7 +125,7 @@ namespace Monster_Rancher_Challenger
                     color1 = System.Drawing.Color.OrangeRed;
                     break;
                 case "Pixie":
-                    color1 = System.Drawing.Color.Pink;
+                    color1 = System.Drawing.Color.DeepPink;
                     break;
                 case "Naga":
                     color1 = System.Drawing.Color.DarkMagenta;
@@ -157,7 +158,7 @@ namespace Monster_Rancher_Challenger
                     color1 = System.Drawing.Color.White;
                     break;
                 case "Disk":
-                    color1 = System.Drawing.Color.Beige;
+                    color1 = System.Drawing.Color.SaddleBrown;
                     break;
                 case "Ape":
                     color1 = System.Drawing.Color.BurlyWood;
@@ -190,7 +191,7 @@ namespace Monster_Rancher_Challenger
                     color2 = System.Drawing.Color.OrangeRed;
                     break;
                 case "Pixie":
-                    color2 = System.Drawing.Color.Pink;
+                    color2 = System.Drawing.Color.DeepPink;
                     break;
                 case "Naga":
                     color2 = System.Drawing.Color.DarkMagenta;
@@ -223,7 +224,7 @@ namespace Monster_Rancher_Challenger
                     color2 = System.Drawing.Color.White;
                     break;
                 case "Disk":
-                    color2 = System.Drawing.Color.Beige;
+                    color2 = System.Drawing.Color.SaddleBrown;
                     break;
                 case "Ape":
                     color2 = System.Drawing.Color.BurlyWood;
@@ -252,9 +253,10 @@ namespace Monster_Rancher_Challenger
             Random rng = new Random();
             int randtime = rng.Next(10, 50);
             string full = string.Empty;
-            for(int i = 0; i < randtime; i++)
+            for(int i = 0; i < randtime || prevMon == full; i++)
             {
                 full = Monsters[rng.Next(0, Monsters.Count)];
+                // Split[0] is before the delim, Split[1] is after the delim.
                 string mainBreed = full.Split("/")[0].Split(" (")[1];
                 string subBreed = full.Split("/")[1].Split(")")[0];
                 Monster.Content = full.Split(" (")[0];
