@@ -81,9 +81,9 @@ namespace Monster_Rancher_Challenger
         
         , "Ape (Ape/Ape)", "Stone Ape (Ape/Golem)", "George (Ape/Hare)", "Great Ape (Ape/Gali)", "Pepe (Ape/Plant)", "Shades (Ape/???)", "Cutey (Ape/???)", "Hot Foot (Ape/???)"};
 
-        List<SolidColorBrush> colors = new List<SolidColorBrush> { new SolidColorBrush(Colors.Salmon), new SolidColorBrush(Colors.RoyalBlue)
-        , new SolidColorBrush(Colors.SteelBlue), new SolidColorBrush(Colors.Fuchsia), new SolidColorBrush(Colors.DarkViolet), new SolidColorBrush(Colors.DarkRed)
-        , new SolidColorBrush(Colors.DarkOliveGreen) };
+        //List<SolidColorBrush> colors = new List<SolidColorBrush> { new SolidColorBrush(Colors.Salmon), new SolidColorBrush(Colors.RoyalBlue)
+        //, new SolidColorBrush(Colors.SteelBlue), new SolidColorBrush(Colors.Fuchsia), new SolidColorBrush(Colors.DarkViolet), new SolidColorBrush(Colors.DarkRed)
+        //, new SolidColorBrush(Colors.DarkOliveGreen) };
 
         public MonsterSelectorPage()
         {
@@ -94,19 +94,171 @@ namespace Monster_Rancher_Challenger
             Monsters = shuffledMonsters;
         }
 
+        private void Color_Change(string mainBreed, string subBreed)
+        {
+            System.Drawing.Color color1 = System.Drawing.Color.Black;
+            System.Drawing.Color color2 = System.Drawing.Color.Black;
+
+            switch ((mainBreed))
+            {
+                case "Dino":
+                    color1 = System.Drawing.Color.Green;
+                    break;
+                case "Tiger":
+                    color1 = System.Drawing.Color.Blue;
+                    break;
+                case "Suezo":
+                    color1 = System.Drawing.Color.Yellow;
+                    break;
+                case "Golem":
+                    color1 = System.Drawing.Color.Gray;
+                    break;
+                case "Worm":
+                    color1 = System.Drawing.Color.Brown;
+                    break;
+                case "Hare":
+                    color1 = System.Drawing.Color.SandyBrown;
+                    break;
+                case "Plant":
+                    color1 = System.Drawing.Color.OrangeRed;
+                    break;
+                case "Pixie":
+                    color1 = System.Drawing.Color.Pink;
+                    break;
+                case "Naga":
+                    color1 = System.Drawing.Color.DarkMagenta;
+                    break;
+                case "Nya":
+                    color1 = System.Drawing.Color.Cornsilk;
+                    break;
+                case "Ghost":
+                    color1 = System.Drawing.Color.Snow;
+                    break;
+                case "Monol":
+                    color1 = System.Drawing.Color.Black;
+                    break;
+                case "Magic":
+                    color1 = System.Drawing.Color.RosyBrown;
+                    break;
+                case "Jell":
+                    color1 = System.Drawing.Color.DeepSkyBlue;
+                    break;
+                case "Henger":
+                    color1 = System.Drawing.Color.BlanchedAlmond;
+                    break;
+                case "Gali":
+                    color1 = System.Drawing.Color.DarkGoldenrod;
+                    break;
+                case "Dragon":
+                    color1 = System.Drawing.Color.Red;
+                    break;
+                case "Doodle":
+                    color1 = System.Drawing.Color.White;
+                    break;
+                case "Disk":
+                    color1 = System.Drawing.Color.Beige;
+                    break;
+                case "Ape":
+                    color1 = System.Drawing.Color.BurlyWood;
+                    break;
+                default:
+                    break;
+            }
+
+            switch ((subBreed))
+            {
+                case "Dino":
+                    color2 = System.Drawing.Color.Green;
+                    break;
+                case "Tiger":
+                    color2 = System.Drawing.Color.Blue;
+                    break;
+                case "Suezo":
+                    color2 = System.Drawing.Color.Yellow;
+                    break;
+                case "Golem":
+                    color2 = System.Drawing.Color.Gray;
+                    break;
+                case "Worm":
+                    color2 = System.Drawing.Color.Brown;
+                    break;
+                case "Hare":
+                    color2 = System.Drawing.Color.SandyBrown;
+                    break;
+                case "Plant":
+                    color2 = System.Drawing.Color.OrangeRed;
+                    break;
+                case "Pixie":
+                    color2 = System.Drawing.Color.Pink;
+                    break;
+                case "Naga":
+                    color2 = System.Drawing.Color.DarkMagenta;
+                    break;
+                case "Nya":
+                    color2 = System.Drawing.Color.Cornsilk;
+                    break;
+                case "Ghost":
+                    color2 = System.Drawing.Color.Snow;
+                    break;
+                case "Monol":
+                    color2 = System.Drawing.Color.Black;
+                    break;
+                case "Magic":
+                    color2 = System.Drawing.Color.RosyBrown;
+                    break;
+                case "Jell":
+                    color2 = System.Drawing.Color.DeepSkyBlue;
+                    break;
+                case "Henger":
+                    color2 = System.Drawing.Color.BlanchedAlmond;
+                    break;
+                case "Gali":
+                    color2 = System.Drawing.Color.DarkGoldenrod;
+                    break;
+                case "Dragon":
+                    color2 = System.Drawing.Color.Red;
+                    break;
+                case "Doodle":
+                    color2 = System.Drawing.Color.White;
+                    break;
+                case "Disk":
+                    color2 = System.Drawing.Color.Beige;
+                    break;
+                case "Ape":
+                    color2 = System.Drawing.Color.BurlyWood;
+                    break;
+                case "???":
+                    color2 = System.Drawing.Color.DarkSlateGray;
+                    break;
+                default:
+                    break;
+            }
+
+            // Make weights to influence colors
+            double weight1 = 0.6;
+            double weight2 = 0.4;
+            // Using math to get a more accurate color.
+            byte r = (byte)(color1.R * weight1 + color2.R * weight2);
+            byte g = (byte)(color1.G * weight1 + color2.G * weight2);
+            byte b = (byte)(color1.B * weight1 + color2.B * weight2);
+            System.Windows.Media.Color combinedColors = System.Windows.Media.Color.FromArgb(255, r, g, b);
+            Monster.Foreground = new SolidColorBrush(combinedColors);
+        }
+
         private async void Click_Click(object sender, RoutedEventArgs e)
         {
             // Randomly select a monster from the randomized list of monsters (Unnecessary, might just index later).
             Random rng = new Random();
-            Random color = new Random();
             int randtime = rng.Next(10, 50);
             string full = string.Empty;
             for(int i = 0; i < randtime; i++)
             {
                 full = Monsters[rng.Next(0, Monsters.Count)];
+                string mainBreed = full.Split("/")[0].Split(" (")[1];
+                string subBreed = full.Split("/")[1].Split(")")[0];
                 Monster.Content = full.Split(" (")[0];
-                Monster.Foreground = colors[rng.Next(0, colors.Count)];
                 Breed.Content = "(" + full.Split(" (")[1];
+                Color_Change(mainBreed, subBreed);
                 await Task.Delay(25);
             }
             //Monster.Text = Monsters[rng.Next(0, Monsters.Count)];
