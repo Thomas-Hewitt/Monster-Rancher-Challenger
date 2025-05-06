@@ -2,7 +2,7 @@
 using System.Data;
 using System.Windows;
 
-namespace Monster_Rancher_Tourney_Selector
+namespace Monster_Rancher_Challenger
 {
     /// <summary>
     /// Interaction logic for App.xaml
