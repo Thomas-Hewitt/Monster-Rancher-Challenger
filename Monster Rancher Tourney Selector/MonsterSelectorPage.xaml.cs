@@ -10,6 +10,7 @@ using System.Windows.Controls;
 using System.Diagnostics;
 using System.Windows.Media;
 using System.Drawing;
+using System.Collections;
 
 namespace Monster_Rancher_Challenger
 {
@@ -23,7 +24,7 @@ namespace Monster_Rancher_Challenger
         , "Tiger (Tiger/Tiger)", "Dento (Tiger/Dino)", "Toto (Tiger/Golem)", "Deton (Tiger/Pixie)", "Yakuto (Tiger/Worm)", "Frost (Tiger/Jell)", "Mono Eye (Tiger/Suezo)"
         , "Rover (Tiger/Hare)", "Ballon (Tiger/Gali)", "Velvet (Tiger/Monol)", "Cabalos (Tiger/Naga)", "Leafy (Tiger/Plant)", "Gray Wolf (Tiger/???)"
         , "White Hound (Tiger/???)", "Gold Wolf (Tiger/???)"
-        
+
         , "Suezo (Suezo/Suezo)", "Melon (Suezo/Dino)", "Rocky (Suezo/Golem)", "Horn (Suezo/Tiger)", "Pink Eye (Suezo/Pixie)", "Fly Eye (Suezo/Worm)", "Toothy (Suezo/Jell)"
         , "Woody (Suezo/Hare)", "Orion (Suezo/Gali)", "Bloodshot (Suezo/Monol)", "Noro (Suezo/Monol)", "Ray (Suezo/Plant)", "Looker (Suezo/???)", "Planet (Suezo/???)"
         , "Beamer (Suezo/???)"
@@ -49,36 +50,36 @@ namespace Monster_Rancher_Challenger
         , "Monol (Monol/Monol)", "Jura Wall (Monol/Dino)", "Obelisk (Monol/Golem)", "Sponge (Monol/Tiger)", "Ropa (Monol/Pixie)", "Sobo (Monol/Worm)", "Ice Candy (Monol/Jell)"
         , "Sandy (Monol/Suezo)", "Groomy (Monol/Hare)", "Messiah (Monol/Gali)", "Asfar (Monol/Naga)", "New Leaf (Monol/Plant)", "Two-Tone (Monol/???)", "Sky (Monol/???)"
         , "Scribble (Monol/???)"
-        
+
         , "Magic (Magic/Magic)", "Eye Fan (Magic/Suezo)", "Kaduka (Magic/Naga)", "Kuro (Magic/Plant)", "Gangster (Magic/Henger)", "Ardebaren (Magic/???)", "Zombie (Magic/???)"
         , "Jerod (Magic/???)"
-        
+
         , "Jell (Jell/Jell)", "Scales (Jell/Dino)", "Fencer (Jell/Golem)", "Icy (Jell/Tiger)", "Pink Jam (Jell/Pixie)", "Jello (Jell/Worm)", "Jupiter (Jell/Suezo)", "Clay (Jell/Hare)"
         , "Gil (Jell/Gali)", "Lava (Jell/Monol)", "Papad (Jell/Naga)", "Kelp (Jell/Plant)", "Stripe (Jell/???)", "Sam (Jell/???)", "Stripe(Red) (Jell/???)"
-        
+
         , "Henger (Henger/Henger)", "Omega (Henger/Dino)", "Gia (Henger/Golem)", "Proto (Henger/Gali)", "Reformer (Henger/Monol)", "Magnet (Henger/???)", "Skeleton (Henger/???)"
         , "Magnet(Red) (Henger/???)"
-        
+
         , "Hare (Hare/Hare)", "Scaler (Hare/Dino)", "Stoner (Hare/Golem)", "Pulsar (Hare/Tiger)", "Buster (Hare/Pixie)", "Groucho (Hare/Worm)", "Blue Fur (Hare/Jell)"
         , "Cross Eye (Hare/Suezo)", "Prince (Hare/Gali)", "Evil Hare (Hare/Monol)", "Amethyst (Hare/Naga)", "Good Guy (Hare/Plant)", "Sleeves (Hare/???)", "Santa (Hare/???)"
         , "Sleeves(Black) (Hare/???)"
-        
+
         , "Golem (Golem/Golem)", "Verde (Golem/Dino)", "Ice Man (Golem/Tiger)", "Dean (Golem/Pixie)", "Magma (Golem/Worm)", "Poseidon (Golem/Jell)", "Titan (Golem/Suezo)"
         , "Maigon (Golem/Hare)", "Amenho (Golem/Gali)", "Shadow (Golem/Monol)", "Marble (Golem/Naga)", "Echo (Golem/Plant)", "Bikini (Golem/???)", "Mt. Tecmo (Golem/???)"
         , "Bikini(Red) (Golem/???)"
-        
+
         , "Ghost (Ghost/Ghost)", "Mage (Ghost/???)", "Komi (Ghost/???)", "Mage(White) (Ghost/???)"
-        
+
         , "Gali (Gali/Gali)", "Lexus (Gali/Dino)", "Warrior (Gali/Golem)", "Sapphire (Gali/Tiger)", "Pixel (Gali/Pixie)", "Style (Gali/Worm)", "Aqua (Gali/Jell)", "Omen (Gali/Suezo)"
         , "Galion (Gali/Hare)", "Gara (Gali/Monol)", "Shon Mask (Gali/Naga)", "Color (Gali/Plant)", "Gamer (Gali/???)", "Kuma (Gali/???)", "Milky Way (Gali/???)"
-        
+
         , "Dragon (Dragon/Dragon)", "Jihad (Dragon/Golem)", "Gariel (Dragon/Gali)", "Laguna (Dragon/Monol)", "Robo (Dragon/Henger)", "Apocolis (Dragon/???)", "Moo (Dragon/???)"
         , "Apocolis(White) (Dragon/???)"
-        
+
         , "Doodle (Doodle/Doodle)", "Jaques (Doodle/???)", "Sketch (Doodle/???)", "Disrupt (Doodle/???)"
-        
+
         , "Disk (Disk/Disk)", "Gooaall! (Disk/???)", "Radial (Disk/???)"
-        
+
         , "Ape (Ape/Ape)", "Stone Ape (Ape/Golem)", "George (Ape/Hare)", "Great Ape (Ape/Gali)", "Pepe (Ape/Plant)", "Shades (Ape/???)", "Cutey (Ape/???)", "Hot Foot (Ape/???)"};
 
         //List<SolidColorBrush> colors = new List<SolidColorBrush> { new SolidColorBrush(Colors.Salmon), new SolidColorBrush(Colors.RoyalBlue)
