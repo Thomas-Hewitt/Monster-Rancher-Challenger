@@ -86,14 +86,21 @@ namespace Monster_Rancher_Challenger
         //, new SolidColorBrush(Colors.SteelBlue), new SolidColorBrush(Colors.Fuchsia), new SolidColorBrush(Colors.DarkViolet), new SolidColorBrush(Colors.DarkRed)
         //, new SolidColorBrush(Colors.DarkOliveGreen) };
         string prevMon = string.Empty;
+        int index;
 
         public MonsterSelectorPage()
         {
             InitializeComponent();
+            MonsterRandomizer();
+        }
+
+        private void MonsterRandomizer()
+        {
             Random rng = new Random();
             // Randomize the list of monsters.
             List<string> shuffledMonsters = Monsters.OrderBy(_ => rng.Next(0, Monsters.Count)).ToList();
-            Monsters = shuffledMonsters;
+            Monsters = shuffledMonsters; 
+            index = 0;
         }
 
         private void Color_Change(string mainBreed, string subBreed)
@@ -247,13 +254,11 @@ namespace Monster_Rancher_Challenger
             Monster.Foreground = new SolidColorBrush(combinedColors);
         }
 
-        private async void Click_Click(object sender, RoutedEventArgs e)
+        private async Task Silly_Animation(Random rng)
         {
-            // Randomly select a monster from the randomized list of monsters (Unnecessary, might just index later).
-            Random rng = new Random();
             int randtime = rng.Next(10, 50);
             string full = string.Empty;
-            for(int i = 0; i < randtime || prevMon == full; i++)
+            for (int i = 0; i < randtime || prevMon == full; i++)
             {
                 full = Monsters[rng.Next(0, Monsters.Count)];
                 // Split[0] is before the delim, Split[1] is after the delim.
@@ -264,6 +269,34 @@ namespace Monster_Rancher_Challenger
                 Color_Change(mainBreed, subBreed);
                 await Task.Delay(25);
             }
+        }
+
+        private async void Click_Click(object sender, RoutedEventArgs e)
+        {
+            // Check index value
+            // If index == Monsters.Count, run MonsterRandomizer()
+            // Else, simply index as normal.
+            // While also running the animation.
+
+            // Randomly select a monster from the randomized list of monsters (Unnecessary, might just index later).
+            Random rng = new Random();
+            await Silly_Animation(rng);
+            string full = string.Empty;
+
+            if(index == Monsters.Count)
+            {
+                MonsterRandomizer();
+            }
+
+            full = Monsters[index];
+            index++;
+            string mainBreed = full.Split("/")[0].Split(" (")[1];
+            string subBreed = full.Split("/")[1].Split(")")[0];
+            Monster.Content = full.Split(" (")[0];
+            Breed.Content = "(" + full.Split(" (")[1];
+            Color_Change(mainBreed, subBreed);
+            prevMon = full;
+
             //Monster.Text = Monsters[rng.Next(0, Monsters.Count)];
         }
 
